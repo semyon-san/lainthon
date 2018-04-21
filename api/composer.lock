@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc7a8cdcef199b8ae2c984c1e3e94b51",
+    "content-hash": "77a4d93c2d895afdd7aabe71f0da45e0",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -168,6 +168,57 @@
             "time": "2018-03-26T11:25:22+00:00"
         },
         {
+            "name": "conquer/oauth2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/borodulin/yii2-oauth2-server.git",
+                "reference": "bdcba05d3e5c280856363877673a8cea3f9dfcb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/borodulin/yii2-oauth2-server/zipball/bdcba05d3e5c280856363877673a8cea3f9dfcb1",
+                "reference": "bdcba05d3e5c280856363877673a8cea3f9dfcb1",
+                "shasum": ""
+            },
+            "require": {
+                "jakeasmith/http_build_url": ">=1.0.1",
+                "yiisoft/yii2": ">=2.0.4"
+            },
+            "require-dev": {
+                "yiisoft/yii2-coding-standards": "~2.0.3"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "conquer\\oauth2\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Borodulin",
+                    "email": "borodulin@gmail.com"
+                }
+            ],
+            "description": "The Oauth2 Server extension for the Yii2 framework",
+            "homepage": "https://github.com/borodulin/yii2-oauth2-server",
+            "keywords": [
+                "oauth2",
+                "oauth2-server",
+                "yii2"
+            ],
+            "time": "2018-03-22T08:16:21+00:00"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.10.0",
             "source": {
@@ -213,6 +264,39 @@
                 "html"
             ],
             "time": "2018-02-23T01:58:20+00:00"
+        },
+        {
+            "name": "jakeasmith/http_build_url",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jakeasmith/http_build_url.git",
+                "reference": "93c273e77cb1edead0cf8bcf8cd2003428e74e37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakeasmith/http_build_url/zipball/93c273e77cb1edead0cf8bcf8cd2003428e74e37",
+                "reference": "93c273e77cb1edead0cf8bcf8cd2003428e74e37",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/http_build_url.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jake A. Smith",
+                    "email": "theman@jakeasmith.com"
+                }
+            ],
+            "description": "Provides functionality for http_build_url() to environments without pecl_http.",
+            "time": "2017-05-01T15:36:40+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
