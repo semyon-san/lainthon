@@ -2,9 +2,8 @@
 
 namespace app\controllers;
 
-use conquer\oauth2\TokenAuth;
 use \yii\rest\ActiveController;
-use \yii\behaviors\TimestampBehavior;
+use \yii\filters\auth\HttpBearerAuth;
 
 class UserController extends ActiveController
 {
@@ -13,11 +12,8 @@ class UserController extends ActiveController
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-            ],
-            'tokenAuth' => [
-                'class' => TokenAuth::class,
+            'bearerAuth' => [
+                'class' => HttpBearerAuth::class,
             ],
         ];
     }
