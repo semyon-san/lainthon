@@ -13,11 +13,15 @@ $config = [
     ],
     'components' => [
         'request' => [
-            'cookieValidationKey' => '',
             'enableCsrfValidation' => false,
+            'enableCsrfCookie' => false,
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
+        ],
+        'response' => [
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
         ],
         'cache' => [
             //'class' => 'yii\caching\FileCache',
@@ -25,7 +29,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
             'enableSession' => false,
             'loginUrl' => false,
         ],
@@ -55,8 +59,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['user']],
-                'auth/login' => 'auth/login',
-                'auth/logout' => 'auth/logout',
+                '/' => 'site',
+                'auth/<action>' => 'auth/<action>',
             ],
         ],
     ],

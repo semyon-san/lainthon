@@ -22,8 +22,8 @@ use \yii\behaviors\TimestampBehavior;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const TOKEN_EXPIRE_TIME = 60*60*24*7;
-    const TOKEN_LENGTH = 40; // sha1
+    const TOKEN_EXPIRE_TIME = 604800; // 60*60*24*7;
+    const TOKEN_LENGTH = 40; // sha1 length
 
     /**
      * {@inheritdoc}
@@ -31,6 +31,14 @@ class User extends ActiveRecord implements IdentityInterface
     public static function tableName()
     {
         return 'User';
+    }
+
+    public function init()
+    {
+        parent::init();
+
+        // TODO: put below line somewhere else
+        //$this->on(self::EVENT_AFTER_LOGOUT, [$this, 'clearToken']);
     }
 
     public function behaviors()
@@ -50,9 +58,9 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username', 'password'], 'required'],
             [['username', 'name'], 'string', 'max' => 255],
-            [['password'], 'string', 'max' => 60],
-            [['access_token'], 'string', 'length' => self::TOKEN_LENGTH],
-            [['username'], 'unique'],
+            ['password', 'string', 'length' => 60],
+            ['access_token', 'string', 'length' => self::TOKEN_LENGTH],
+            ['username', 'unique'],
         ];
     }
 
@@ -97,6 +105,18 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return $token;
+    }
+
+    public function clearToken()
+    {
+        $this->access_token = null;
+        $this->token_expires_at = null;
+
+        if ($this->update() === false) {
+            throw new \yii\db\Exception('could not clear token');
+        }
+
+        return true;
     }
 
     /**

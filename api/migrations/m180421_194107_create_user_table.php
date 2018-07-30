@@ -17,7 +17,7 @@ class m180421_194107_create_user_table extends Migration
             'username' => $this->string()->unique()->notNull(),
             'name' => $this->string(),
             'password' => $this->string(60)->notNull(),
-            'access_token' => $this->string(32),
+            'access_token' => $this->string(40),
             'token_expires_at' => $this->integer(10),
             'created_at' => $this->integer(10)->notNull(),
             'updated_at' => $this->integer(10)->notNull(),

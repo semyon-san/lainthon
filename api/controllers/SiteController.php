@@ -2,12 +2,24 @@
 
 namespace app\controllers;
 
-use yii\web\Controller;
+use Yii;
+use yii\rest\Controller;
+use yii\filters\auth\HttpBearerAuth;
 
 class SiteController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $user = Yii::$app->user->getIdentity();
+        return $this->renderPartial('index', ['user' => $user]);
+    }
+
+    public function behaviors()
+    {
+        return [
+            'bearerAuth' => [
+                'class' => HttpBearerAuth::class,
+            ],
+        ];
     }
 }
